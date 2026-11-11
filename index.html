@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#2478f2" />
+  <link rel="icon" href="data:," />
+  <title>叁悦广场店 · 自助打包台取货指引</title>
+  <link rel="preload" href="./assets/fonts/AlimamaShuHeiTi-Bold.otf" as="font" type="font/otf" crossorigin />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="guide-screen" id="guide-screen">
+    <header class="masthead">
+      <h1 class="page-title">外卖订单列表</h1>
+      <p class="header-hint">如列表找不到相应订单，请联系店员</p>
+      <button id="help-open" class="help-button" type="button">帮助 <span aria-hidden="true">ⓘ</span></button>
+    </header>
+    <section class="sorting-board" aria-label="取货指引">
+      <section id="bin-grid" class="bin-grid" aria-label="取货框订单" aria-busy="true"></section>
+      <aside class="waiting-queue" aria-label="待分拣订单">
+        <h2><span class="clock-icon" aria-hidden="true"></span>待分拣</h2>
+        <ul id="waiting-list"></ul>
+      </aside>
+    </section>
+    <span id="visible-count" class="sr-only" role="status"></span>
+  </main>
+  <aside class="demo-panel" aria-label="演示控制">
+    <button id="demo-toggle" class="demo-toggle" type="button" aria-expanded="false" aria-controls="demo-controls">演示控制</button>
+    <section id="demo-controls" class="demo-controls" hidden>
+      <div class="demo-heading"><strong>取货屏预览</strong><button id="demo-close" type="button" aria-label="关闭演示控制">×</button></div>
+      <fieldset><legend>有订单的框数</legend><div id="count-picker" class="count-picker"></div></fieldset>
+      <label class="setting-row"><span>订单示例</span><select id="data-mode"><option value="design">Figma 稿示例</option><option value="historical">叁悦历史订单</option></select></label>
+      <label class="setting-row"><span>显示异常订单</span><input id="show-failure" type="checkbox" checked /></label>
+      <label class="setting-row"><span>8 号框暂停使用</span><input id="show-disabled" type="checkbox" /></label>
+      <p id="fixture-note" class="demo-note"></p>
+      <button id="fullscreen" class="fullscreen-button" type="button">全屏预览</button>
+      <p class="key-hint">按 1–8 切换框数 · Esc 关闭面板</p>
+    </section>
+  </aside>
+  <dialog id="help-dialog" class="help-dialog" aria-labelledby="help-title">
+    <div class="help-heading"><h2 id="help-title">取货指引</h2><button id="help-close" type="button" aria-label="关闭帮助">×</button></div>
+    <ol><li>核对订单的平台和流水号，找到对应框号。</li><li>显示“可取货”后，取走框内药品和小票。</li><li>异常订单、暂停使用或找不到订单，请联系店员。</li></ol>
+    <button id="help-done" class="primary-button" type="button">知道了</button>
+  </dialog>
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
